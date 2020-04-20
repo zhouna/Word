@@ -1,4 +1,4 @@
-package com.example.word;
+package com.example.word.entity;
 
 public class Word {
     private String english;

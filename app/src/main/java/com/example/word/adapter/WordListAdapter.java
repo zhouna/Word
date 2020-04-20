@@ -1,4 +1,4 @@
-package com.example.word;
+package com.example.word.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.word.R;
+import com.example.word.entity.Word;
 
 import java.util.List;
 

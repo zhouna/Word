@@ -1,6 +1,7 @@
-package com.example.word;
+package com.example.word.fragment;
 
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -11,11 +12,16 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.word.R;
+import com.example.word.entity.Word;
+import com.example.word.adapter.WordListAdapter;
+import com.example.word.viewModel.WordViewModel;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,33 +42,24 @@ public class WordFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(WordViewModel.class);
-        // TODO: Use the ViewModel
+        mViewModel = new ViewModelProvider(this.getActivity()).get(WordViewModel.class);
+
         RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Word> list = new ArrayList<>();
-        Word word = new Word();
-        word.setChinese("（使）不安");
-        word.setEnglish("disquiet");
-        list.add(word);
-        word = new Word();
-        word.setChinese("顺利地");
-        word.setEnglish("smoothly");
-        list.add(word);
-        word = new Word();
-        word.setChinese("上瘾的");
-        word.setEnglish("addictive");
-        list.add(word);
-        word = new Word();
-        word.setChinese("反叛的");
-        word.setEnglish("defiant");
-        list.add(word);
-
-
         WordListAdapter wordListAdapter = new WordListAdapter();
-        wordListAdapter.setList(list);
+
         recyclerView.setAdapter(wordListAdapter);
+
+
+
+        mViewModel.getList().observe(getActivity(), new Observer<List<Word>>() {
+            @Override
+            public void onChanged(List<Word> words) {
+                wordListAdapter.setList(mViewModel.getList().getValue());
+                wordListAdapter.notifyDataSetChanged();
+            }
+        });
 
         View floatView = getView().findViewById(R.id.floatingActionButton2);
         floatView.setOnClickListener(new View.OnClickListener() {

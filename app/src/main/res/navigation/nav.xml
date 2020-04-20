@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/wordFragment"
-        android:name="com.example.word.WordFragment"
+        android:name="com.example.word.fragment.WordFragment"
         android:label="Words"
         tools:layout="@layout/word_fragment">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.word.AddFragment"
+        android:name="com.example.word.fragment.AddFragment"
         android:label="Add"
         tools:layout="@layout/add_fragment">
         <action

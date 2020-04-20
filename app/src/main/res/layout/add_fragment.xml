@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddFragment">
+    tools:context=".fragment.AddFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,26 +27,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.33" />
+            app:layout_constraintGuide_percent="0.19" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.43" />
+            app:layout_constraintGuide_percent="0.3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5499316" />
+            app:layout_constraintGuide_percent="0.39" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/enText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="300dp"
             android:ems="10"
             android:hint="English Word"
             android:inputType="textPersonName"
@@ -56,9 +57,10 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/chText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:width="300dp"
             android:ems="10"
             android:hint="中文释义"
             android:inputType="textPersonName"
@@ -71,12 +73,14 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:width="300dp"
+            android:text="确认"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="@+id/guideline6"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
-            app:layout_constraintVertical_bias="0.263" />
+            app:layout_constraintVertical_bias="0.052" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
