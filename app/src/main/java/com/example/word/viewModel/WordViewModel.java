@@ -29,14 +29,28 @@ public class WordViewModel extends ViewModel {
 
     public void add(Word word) {
         getList().getValue().add(0, word);
-        System.out.println(list.getValue().size()+"==========");
     }
 
     public void delete(Word word) {
         getList().getValue().remove(word);
     }
 
+    public void add(int index, Word word) {
+        getList().getValue().add(index, word);
+    }
+
     public void clearAll() {
         getList().getValue().clear();
+    }
+
+    public List<Word> query(String key) {
+        List<Word> list = getList().getValue();
+        List<Word> filtered = new ArrayList<>();
+        for (Word word: list) {
+            if (word.getEnglish().contains(key)) {
+                filtered.add(word);
+            }
+        }
+        return filtered;
     }
 }

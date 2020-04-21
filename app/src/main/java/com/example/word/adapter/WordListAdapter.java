@@ -36,17 +36,15 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     @Override
     public void onBindViewHolder(@NonNull final WordViewHolder holder, int position) {
         final Word word = list.get(position);
+        holder.word = word;
         holder.ch.setText(word.getChinese());
         holder.en.setText(word.getEnglish());
         holder.num.setText(String.valueOf(position+1));
-        holder.aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    holder.ch.setText("");
-                } else {
-                    holder.ch.setText(word.getChinese());
-                }
+        holder.aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                holder.ch.setText("");
+            } else {
+                holder.ch.setText(word.getChinese());
             }
         });
     }
@@ -57,6 +55,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordVi
     }
 
     public class WordViewHolder extends RecyclerView.ViewHolder {
+        Word word = new Word();
         TextView en, ch, num;
         Switch aSwitch;
         public WordViewHolder(@NonNull View itemView) {
